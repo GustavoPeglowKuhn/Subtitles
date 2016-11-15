@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1479170222 source:d:\prog\cpp\subtitles\main.cpp
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<vector>
+	"subtitle.h"
+
+1479081785 source:d:\prog\cpp\subtitles\subtitletime.cpp
+	"subtitleTime.h"
+
+1479131528 d:\prog\cpp\subtitles\subtitletime.h
+	<iostream>
+
+1479170659 source:d:\prog\cpp\subtitles\subtitleitem.cpp
+	"subtitleItem.h"
+
+1479088820 d:\prog\cpp\subtitles\subtitleitem.h
+	<String>
+	"subtitleTime.h"
+
+1479165507 source:d:\prog\cpp\subtitles\subtitle.cpp
+	"subtitle.h"
+
+1479169266 d:\prog\cpp\subtitles\subtitle.h
+	<iostream>
+	<fstream>
+	<vector>
+	"subtitleItem.h"
+
