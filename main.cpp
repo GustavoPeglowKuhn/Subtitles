@@ -2,11 +2,16 @@
 //#include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 
 #include "subtitle.h"
+#include "mensagens.h"
 
 using namespace std;
+
+bool abrir(Subtitle&, const string);
+bool salvar(Subtitle&, const string, const long int);
 
 int main(int argc, char** argv){
     Subtitle subtitle;
@@ -15,46 +20,69 @@ int main(int argc, char** argv){
     char c[256];
     long int delay = 0;
 
-    /*if(argc == 2){
-        arquivo = argv[0];
-        int a = itoa(argv[1]);
-    }else{*/
+    //ASCII ART
+    //cout << endl << THOR << endl << endl;
 
-        cout << "digite o nome do arquivo: " << endl;
+//    for(unsigned int i=0; i<argc; i++)
+//        cout << "debug: argv[" <<i<< "] = " << argv[i] << endl;
+
+    if(argc == 2 && (string)argv[1] == "-help"){
+        cout << HELP << endl;
+    }else if(argc == 3){
+        arquivo = Subtitle::addBar( (string)argv[1] );
+        istringstream ss(argv[2]);
+        ss >> delay;
+        if( !abrir(subtitle, arquivo) )
+            return -1;
+        subtitle.delay_ms(delay);
+        if( !salvar(subtitle, arquivo, delay) )
+            return -2;
+
+    }else{
+
+        cout << ASK_FILE << endl;
 
         cin.getline(c, 256);
-        arquivo = c;
+        arquivo = Subtitle::addBar( (string)c );
 
         cout << endl;
 
-        if( subtitle.load( arquivo ) ){
-            cout << "\"" << Subtitle::addBar(arquivo) << "\" importado com sucesso!"  << endl;
-            cout << "o arquivo possui: " << subtitle.size() << " itens de legenda." << endl << endl;
-        }else{
-            cout << "erro ao abrir " << Subtitle::addBar(arquivo) << endl;
-            cout << "verifique a ortografia, evite acentos e espaços"  << endl;
-            cout << "(nao esqueca de inserir a extensão do arquivo, geralmente \".srt\")" << endl;
-            //system("pause");
+        if( !abrir(subtitle, arquivo) )
             return -1;
-        }
+        cout << "\"" << arquivo << "\" " << LOAD_OK << endl;
+        cout << FILE_INFO1 << subtitle.size() << FILE_INFO2 << endl << endl;
 
-        cout << "digite o tempo de atrazo, em milisegundos, desejado:" << endl;
-        cout << "(para atrazar a legenda entre com um numero negativo)" << endl;
+        cout << ASK_DELAY << endl;
         cin >> delay;
         subtitle.delay_ms(delay);
 
         cout << endl;
 
-        if( subtitle.save( arquivo ) ){
-            cout << "\"" << Subtitle::addBar(arquivo) << "\" salvo com sucesso" << endl;
-            delay>0?cout<<delay<<" ms adiantado":cout<<delay*-1<<" ms atrazado";
-            cout << endl;
-        }else{
-            cout << "erro ao salvar " << Subtitle::addBar(arquivo) << endl;
-            cout << "verifique a ortografia, evite acentos e espaços"  << endl;
-            //system("pause");
+        if( !salvar(subtitle, arquivo, delay) )
             return -2;
-        }
-    //}
+    }
+    cout << "\"" << arquivo << "\" " << SAVE_OK << endl;
+    delay>0? cout<<delay<<ADIANTADO : cout<<-delay<<ATRAZADO;
+    cout << endl;
     return 0;
+}
+
+bool abrir(Subtitle& subtitle, const string nome){
+    if( subtitle.load( nome ) ){
+        return true;
+    }else{
+        cout << LOAD_ERROR1 << "\"" << nome << "\"" << endl;
+        cout << LOAD_ERROR2 << endl;
+        return false;
+    }
+}
+
+bool salvar(Subtitle& subtitle, const string nome, const long int delay){
+    if( subtitle.save( nome ) ){
+        return true;
+    }else{
+        cout << SAVE_ERROR1 << "\"" << nome << "\"" << endl;
+        cout << SAVE_ERROR2  << endl;
+        return false;
+    }
 }

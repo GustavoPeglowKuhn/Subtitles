@@ -1,14 +1,14 @@
 #include "subtitle.h"
 
-void Subtitle::delay_ms(long int ms){
+void Subtitle::delay_ms(const long int ms){
     //for(SubtitleItem item : _itens){  //item.delay_ms(ms);
     for(unsigned int i=0; i<_itens.size(); i++){
         _itens[i].delay_ms(ms);
     }
 }
 
-bool Subtitle::load(std::string name){
-    name = addBar(name);
+bool Subtitle::load(const std::string name){
+    //name = addBar(name);
     //std::ifstream fin( "\"" + name + "\"" );
     std::ifstream fin( name );
     if(!fin)
@@ -18,8 +18,8 @@ bool Subtitle::load(std::string name){
     return true;
 }
 
-bool Subtitle::save(std::string name){
-    name = addBar(name);
+bool Subtitle::save(const std::string name){
+    //name = addBar(name);
     //std::ofstream fout( "\"" + name + "\"" );
     std::ofstream fout( name );
     if(!fout)
@@ -35,7 +35,7 @@ std::string Subtitle::addBar(const std::string& path){
     std::string res = path;
 
     std::size_t i = res.find('\\', 0);
-    while( i<res.length()-1){//std::string::npos ){
+    while( i<res.length()-1){
         if(res[i+1]!='\\')
             res.insert(i, "\\");
         i = res.find('\\', i+=2);
