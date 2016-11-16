@@ -1,9 +1,10 @@
 //#include <cstdio>
-//#include <cstdlib>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <conio.h>
 
 #include "subtitle.h"
 #include "mensagens.h"
@@ -27,7 +28,26 @@ int main(int argc, char** argv){
 //        cout << "debug: argv[" <<i<< "] = " << argv[i] << endl;
 
     if(argc == 2 && (string)argv[1] == "-help"){
-        cout << HELP << endl;
+        cout << endl << HELP << endl;
+    }else if(argc == 2){
+        arquivo = Subtitle::addBar( (string)argv[1] );
+        if( !abrir(subtitle, arquivo) )
+            return -1;
+        cout << "\"" << arquivo << "\" " << LOAD_OK << endl;
+        cout << FILE_INFO1 << subtitle.size() << FILE_INFO2 << endl << endl;
+
+        cout << ASK_DELAY << endl;
+        cin >> delay;
+        subtitle.delay_ms(delay);
+        cout << endl;
+        if( !salvar(subtitle, arquivo, delay) ){
+            getch();//system("pause");
+            return -2;
+        }
+        cout << "\"" << arquivo << "\" " << SAVE_OK << endl;
+        delay>0? cout<<delay<<ADIANTADO : cout<<-delay<<ATRAZADO;
+        getch();
+        return 0;
     }else if(argc == 3){
         arquivo = Subtitle::addBar( (string)argv[1] );
         istringstream ss(argv[2]);
@@ -37,7 +57,6 @@ int main(int argc, char** argv){
         subtitle.delay_ms(delay);
         if( !salvar(subtitle, arquivo, delay) )
             return -2;
-
     }else{
 
         cout << ASK_FILE << endl;
@@ -82,7 +101,8 @@ bool salvar(Subtitle& subtitle, const string nome, const long int delay){
         return true;
     }else{
         cout << SAVE_ERROR1 << "\"" << nome << "\"" << endl;
-        cout << SAVE_ERROR2  << endl;
+        cout << SAVE_ERROR2 << endl;
+        cout << SAVE_ERROR3 << endl;
         return false;
     }
 }

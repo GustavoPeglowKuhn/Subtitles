@@ -1,8 +1,24 @@
-Esse programa Ã© uma ferramenta para ajustar o tempo das legenda sde filmes de maneira facil, apenas inserindo um tempo de adiantamento ou atrazo, todo o arquio str terÃ¡ seu tempo ajustado. Sem a necessidade de modificar tudo manualmente ou baixar outra ersÃ£o da legenda.
+	Esse programa é uma ferramenta para ajustar o tempo das legendas de filmes
+de maneira facil, apenas inserindo um tempo de adiantamento ou atrazo, todo o
+arquivo str tera seu tempo ajustado, sem a necessidade de modificar tudo
+manualmente ou baixar outra versão da legenda.
 
-Sugestao: se estiver usando windows, adicione o executavel nas variaveis de ambiente. Para alterar um arquivo de legenda apenas abra um terminal na pasta do arquivo e digite "Subtitles" para executar a ferramnta
+	Como utilizar: Altere o programa padrao para abrir arquivos de legenda
+(.srt) para a ferammenta Subtitles, assim basta abrir o arquivo e digitar o 
+delay. Se estiver usando windows, a ferramenta pode ser adicionada as variaveis
+de ambiente PATH e executada diretamente pelo terminal com:
+"Subtitles arquivo.srt delay", sendo o delay em milisegundos.
 
-Desenvolvedores: o projeto foi feito usando o software Code::Blocks, para edita-lo abra o arquivo "Subtitles.cbp"
+	Como alterar o programa padrao: clique com o botao direito do mouse sobre um
+arquivo .srt e va em "abrir com -> escolher outro aplicativo", depois clique em
+"mais aplicativos -> procurar por outro aplicativo neste PC" e indique o local 
+do arquivo "Subtitles.exe", procure em
+"Downloads\Subtitles\bin\Release\Subtitles.exe".
+
+	Desenvolvedores: o projeto foi feito usando o software Code::Blocks, para
+edita-lo abra o arquivo "Subtitles.cbp"
+
+	
 
 por Alemao
 may the Force be with you

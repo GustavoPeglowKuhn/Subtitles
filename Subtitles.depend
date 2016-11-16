@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1479248111 source:d:\prog\cpp\subtitles\main.cpp
+1479262252 source:d:\prog\cpp\subtitles\main.cpp
+	<cstdlib>
 	<iostream>
 	<fstream>
 	<sstream>
 	<vector>
+	<conio.h>
 	"subtitle.h"
 	"mensagens.h"
 

@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="mensagens.h" />
 		<Unit filename="subtitle.cpp" />
 		<Unit filename="subtitle.h" />
 		<Unit filename="subtitleItem.cpp" />
