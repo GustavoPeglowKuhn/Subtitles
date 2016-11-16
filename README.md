@@ -22,5 +22,4 @@ O projeto foi feito usando o software Code::Blocks, para
 edita-lo abra o arquivo "Subtitles.cbp"
 
 
-por Alemao
-may the Force be with you
+por Alemao, may the Force be with you

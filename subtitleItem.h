@@ -17,9 +17,9 @@ public:
 	const void setItem(const SubtitleItem&);
 	const void setItem(const SubtitleTime, const SubtitleTime, const std::string);
 
-	const void delay_ms(const long int valor){ _t1+=valor; _t2+=valor; };
-	const void operator+=(const long int valor){ delay_ms(valor); };
-	const void operator-=(const long int valor){ delay_ms(-valor); };
+	const inline void delay_ms(const long int valor){ _t1+=valor; _t2+=valor; };
+	const inline void operator+=(const long int valor){ delay_ms(valor); };
+	const inline void operator-=(const long int valor){ delay_ms(-valor); };
 
 	const inline void setText(const std::string text){ _text=text; };
 	const inline std::string getText(){ return _text; };

@@ -2,8 +2,11 @@
 
 void Subtitle::delay_ms(const long int ms){
     //for(SubtitleItem item : _itens){  //item.delay_ms(ms);
-    for(unsigned int i=0; i<_itens.size(); i++){
-        _itens[i].delay_ms(ms);
+//    for(unsigned int i=0; i<_itens.size(); i++){
+//        _itens[i].delay_ms(ms);
+//    }
+    for(unsigned int i=0; i<size(); i++){
+        at(i).delay_ms(ms);
     }
 }
 
@@ -44,9 +47,11 @@ std::string Subtitle::addBar(const std::string& path){
 }
 
 std::ostream& operator<<(std::ostream& os, Subtitle& obj){
-	for(unsigned int i=0; i<obj._itens.size(); i++){
+	//for(unsigned int i=0; i<obj._itens.size(); i++){
+	for(unsigned int i=0; i<obj.size(); i++){
 		os << i+1 << "\n";
-		os << obj._itens[i];
+		//os << obj._itens[i];
+		os << obj[i];
 	}
 	return os;
 }
@@ -58,7 +63,8 @@ std::istream& operator>>(std::istream& is, Subtitle& obj){
 		SubtitleItem i;
 		is >> i;
 		is >> n;
-		obj._itens.push_back(i);
+		//obj._itens.push_back(i);
+		obj.push_back(i);
 	}
 	return is;
 }
