@@ -29,6 +29,10 @@ int main(int argc, char** argv){
 
     if(argc == 2 && (string)argv[1] == "-help"){
         cout << endl << HELP << endl;
+        return 0;
+    }else if(argc == 2 && (string)argv[1] == "-version"){
+        cout << VERSION << endl;
+        return 0;
     }else if(argc == 2){
         arquivo = Subtitle::addBar( (string)argv[1] );
         if( !abrir(subtitle, arquivo) )

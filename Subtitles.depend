@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1479265049 source:d:\prog\cpp\subtitles\main.cpp
+1479513117 source:d:\prog\cpp\subtitles\main.cpp
 	<cstdlib>
 	<iostream>
 	<fstream>
@@ -31,5 +31,5 @@
 	<vector>
 	"subtitleItem.h"
 
-1479265132 d:\prog\cpp\subtitles\mensagens.h
+1480625598 d:\prog\cpp\subtitles\mensagens.h
 
